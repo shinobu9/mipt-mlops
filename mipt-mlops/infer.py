@@ -4,7 +4,7 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from constants import BATCH_SIZE_DEFAULT, data_dir, models_dir
+from constants import BATCH_SIZE_DEFAULT, data_dir, models_dir, predictions_dir
 from datasets import Data
 from networks import NeuralNetwork
 
@@ -29,5 +29,7 @@ if __name__ == "__main__":
             y_pred.append(predicted)
             total += y.size(0)
             correct += (predicted == y.numpy()).sum().item()
+    result = np.array(list(itertools.chain(*y_pred)))
+    result.tofile(predictions_dir / "predict.csv", sep=",")
 
     print(f"Accuracy of the network: {100 * correct // total}%")
