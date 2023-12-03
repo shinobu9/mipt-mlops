@@ -1,13 +1,12 @@
 import numpy as np
 import torch
+from mipt_mlops.constants import BATCH_SIZE, data_dir, models_dir
+from mipt_mlops.datasets import Data
+from mipt_mlops.networks import NeuralNetwork
 from sklearn.datasets import make_circles
 from sklearn.model_selection import train_test_split
 from torch import nn
 from torch.utils.data import DataLoader
-
-from mipt_mlops.constants import BATCH_SIZE, data_dir, models_dir
-from mipt_mlops.datasets import Data
-from mipt_mlops.networks import NeuralNetwork
 
 
 if __name__ == "__main__":
