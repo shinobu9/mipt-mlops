@@ -4,9 +4,9 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from constants import BATCH_SIZE_DEFAULT, data_dir, models_dir, predictions_dir
-from datasets import Data
-from networks import NeuralNetwork
+from mipt_mlops.constants import BATCH_SIZE, data_dir, models_dir, predictions_dir
+from mipt_mlops.datasets import Data
+from mipt_mlops.networks import NeuralNetwork
 
 
 if __name__ == "__main__":
@@ -14,9 +14,9 @@ if __name__ == "__main__":
         X_test = np.load(stream)
         y_test = np.load(stream)
     test_data = Data(X_test, y_test)
-    test_dataloader = DataLoader(test_data, BATCH_SIZE_DEFAULT, shuffle=True)
+    test_dataloader = DataLoader(test_data, BATCH_SIZE, shuffle=True)
     model = NeuralNetwork()
-    model.load_state_dict(torch.load(models_dir / "circle_network.pkl"))
+    model.load_state_dict(torch.load(models_dir / "net.pkl"))
 
     y_pred = []
     total = 0

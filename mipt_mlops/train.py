@@ -5,9 +5,9 @@ from sklearn.model_selection import train_test_split
 from torch import nn
 from torch.utils.data import DataLoader
 
-from constants import BATCH_SIZE_DEFAULT, data_dir, models_dir
-from datasets import Data
-from networks import NeuralNetwork
+from mipt_mlops.constants import BATCH_SIZE, data_dir, models_dir
+from mipt_mlops.datasets import Data
+from mipt_mlops.networks import NeuralNetwork
 
 
 if __name__ == "__main__":
@@ -18,7 +18,7 @@ if __name__ == "__main__":
         np.save(stream, y_test)
 
     train_data = Data(X_train, y_train)
-    train_dataloader = DataLoader(train_data, BATCH_SIZE_DEFAULT, shuffle=True)
+    train_dataloader = DataLoader(train_data, BATCH_SIZE, shuffle=True)
 
     input_dim = 2
     hidden_dim = 10
@@ -40,4 +40,4 @@ if __name__ == "__main__":
             loss.backward()
             optimizer.step()
     print("Training Complete")
-    torch.save(model.state_dict(), models_dir / "circle_network.pkl")
+    torch.save(model.state_dict(), models_dir / "net.pkl")

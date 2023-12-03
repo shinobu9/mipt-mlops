@@ -7,4 +7,4 @@ models_dir = repo_dir / "models"
 data_dir = repo_dir / "data"
 predictions_dir = repo_dir / "predictions"
 
-BATCH_SIZE_DEFAULT = 64
+BATCH_SIZE = 64
